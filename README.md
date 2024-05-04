@@ -1,2 +1,28 @@
-# goit-node-rest-api
-This project was created as part of the master's program at the University of Woolf.
+# Node.js
+
+node_modules/
+
+# macOS
+
+.DS_Store
+
+# Logs
+
+logs/
+\*.log
+
+# Build output
+
+dist/
+build/
+
+# Environment variables
+
+.env
+.env.local
+.env.\*.local
+
+# IDE files
+
+.idea/
+.vscode/
