@@ -1,6 +1,6 @@
 import HttpError from "../helpers/HttpError.js";
 import { verifyToken } from "../helpers/jwt.js";
-import { findUser } from "../services/authServices.js";
+import { findUser } from "../services/userServices.js";
 
 const aunthenticate = async (req, res, next) => {
   const { authorization } = req.headers;

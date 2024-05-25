@@ -4,7 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import "dotenv/config";
 
-import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 import contactsRouter from "./routes/contactsRouter.js";
 
 const { DB_HOST, PORT } = process.env;
@@ -14,8 +14,9 @@ const app = express();
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
-app.use("/api/users", authRouter);
+app.use("/api/users", userRouter);
 app.use("/api/contacts", contactsRouter);
 
 app.use((_, res) => {
