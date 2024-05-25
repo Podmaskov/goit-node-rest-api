@@ -16,7 +16,9 @@ export const register = ctrlWrapper(async (req, res) => {
   const newUser = await saveUser(req.body);
   res
     .status(201)
-    .json({ email: newUser.email, subscription: newUser.subscription });
+    .json({
+      user: { email: newUser.email, subscription: newUser.subscription },
+    });
 });
 
 export const login = ctrlWrapper(async (req, res) => {
