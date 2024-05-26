@@ -32,8 +32,8 @@ userRouter.post("/logout", authenticate, logout);
 
 userRouter.patch(
   "/avatars",
-  upload.single("avatar"),
   authenticate,
+  upload.single("avatar"),
   updateAvatar
 );
 

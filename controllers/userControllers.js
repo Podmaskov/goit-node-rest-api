@@ -1,6 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
 import gravatar from "gravatar";
+import Jimp from "jimp";
+
 import { saveUser, findUser, updateUser } from "../services/userServices.js";
 
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
@@ -64,6 +66,12 @@ export const logout = ctrlWrapper(async (req, res) => {
 });
 
 export const updateAvatar = ctrlWrapper(async (req, res) => {
+  const img = await Jimp.read(req.file.path);
+  await img
+    .autocrop()
+    .cover(250, 250, Jimp.HORIZONTAL_ALIGN_CENTER || Jimp.VERTICAL_ALIGN_MIDDLE)
+    .writeAsync(req.file.path);
+
   const { _id } = req.user;
 
   const { path: oldPath, filename } = req.file;
