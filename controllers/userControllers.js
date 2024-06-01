@@ -66,6 +66,10 @@ export const logout = ctrlWrapper(async (req, res) => {
 });
 
 export const updateAvatar = ctrlWrapper(async (req, res) => {
+  if (!req.file) {
+    throw HttpError(400, "Expected file");
+  }
+
   const img = await Jimp.read(req.file.path);
   await img
     .autocrop()
